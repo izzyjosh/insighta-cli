@@ -1,0 +1,42 @@
+{
+  "name": "insighta-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "bin": {
+    "insighta": "./bin/insighta.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izzyjosh/insighta-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/izzyjosh/insighta-cli/issues"
+  },
+  "homepage": "https://github.com/izzyjosh/insighta-cli#readme",
+  "dependencies": {
+    "axios": "^1.15.2",
+    "chalk": "^5.6.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^14.0.3",
+    "conf": "^15.1.0",
+    "inquirer": "^13.4.2",
+    "ora": "^9.4.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.5.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.3"
+  }
+}
