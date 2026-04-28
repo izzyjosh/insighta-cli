@@ -70,7 +70,7 @@ api.interceptors.response.use(
       return api(originalRequest);
     } catch (refreshError) {
       await clearCredentials();
-      throw new Error("Session expired. Please login again.");
+      throw new Error("Session expired. Please login again.", { cause: refreshError });
     }
   },
 );
