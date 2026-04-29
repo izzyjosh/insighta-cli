@@ -2,8 +2,18 @@ const ora = require("ora");
 const { searchProfiles } = require("../../services/profile.client");
 const { renderProfilesTable } = require("../../services/cli-ui");
 
-module.exports = async function searchProfilesCommand(options = {}) {
-  const spinner = ora("Searching profiles...").start();
+module.exports = async function searchProfilesCommand(queryOrOptions = {}, maybeOptions = {}) {
+  const spinner = ora('Searching profiles...').start();
+
+  // Support two invocation forms:
+  // 1. search(queryString, options)
+  // 2. search(options)
+  let options = {};
+  if (typeof queryOrOptions === 'string') {
+    options = { ...(maybeOptions || {}), q: queryOrOptions };
+  } else {
+    options = queryOrOptions || {};
+  }
 
   try {
     const response = await searchProfiles(options);
@@ -12,7 +22,7 @@ module.exports = async function searchProfilesCommand(options = {}) {
     spinner.succeed(`Found ${profiles.length} profile(s)`);
 
     if (profiles.length === 0) {
-      console.log("No profiles found.");
+      console.log('No profiles found.');
       return;
     }
 
@@ -23,7 +33,7 @@ module.exports = async function searchProfilesCommand(options = {}) {
       );
     }
   } catch (err) {
-    spinner.fail("Failed to search profiles");
+    spinner.fail('Failed to search profiles');
     console.error(err.response?.data || err.message);
   }
 };
