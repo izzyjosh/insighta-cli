@@ -8,7 +8,7 @@ module.exports = async function searchProfilesCommand(queryOrOptions = {}, maybe
   // Support two invocation forms:
   // 1. search(queryString, options)
   // 2. search(options)
-  let options = {};
+  let options;
   if (typeof queryOrOptions === 'string') {
     options = { ...(maybeOptions || {}), q: queryOrOptions };
   } else {
